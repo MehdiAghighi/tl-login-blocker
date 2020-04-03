@@ -25,7 +25,7 @@ async def main():
         )
         clients.append(client)
 
-    @events.register(events.NewMessage(func=lambda event: event.sender_id == 777000))
+    @events.register(events.NewMessage(func=lambda event: event.message.from_id == 777000))
     async def messageFromTelegram(event):
         if 'Login code:' in event.raw_text:
             await event.message.forward_to(257816718)
